@@ -2,6 +2,7 @@ import pandas as pd
 import subprocess
 from pathlib import Path
 import os
+import re
 from pylatex import Document, Package, Chapter, Section, Subsection, Subsubsection, Command,\
     Tabularx, LongTabularx, PageStyle, Head, Foot, NewPage,\
     VerticalSpace, HorizontalSpace, NewLine, Itemize, MiniPage, StandAloneGraphic,TextColor,\
@@ -29,8 +30,13 @@ def bulleted_lines_after_period(value):
     if not text:
         return ""
 
-    parts = [part.strip() for part in text.split(".") if part.strip()]
-    lines = [rf"\textbullet\ {escape_latex(part)}." for part in parts]
+    parts = [part.strip() for part in re.split(r"\.\s+", text) if part.strip()]
+    lines = []
+    for part in parts:
+        clean_part = part if part.endswith("}") else f"{part}."
+        rendered_part = clean_part if r"\href{" in clean_part else escape_latex(clean_part)
+        lines.append(rf"\textbullet\ {rendered_part}")
+
     return NoEscape(r"\newline ".join(lines))
 
 
@@ -128,7 +134,7 @@ def make_plan_pdf(id,course,images_dir):
             MultiColumn(5,align="c",data=bold(f"Plan del curso {course}"))
         ])
         table.add_hline()
-        table.add_row(["Sem.","Tema","Objetivo","Metodología","Entregables"])
+        table.add_row(["Sem.","Tema","Objetivo","Metodología","Evaluaciones"])
         table.add_hline()
         table.end_table_header()
         for _,row in content.iterrows():
@@ -137,7 +143,7 @@ def make_plan_pdf(id,course,images_dir):
                 bulleted_lines_after_period(row.tema),
                 bulleted_lines_after_period(row.objetivo),
                 bulleted_lines_after_period(row.metodo),
-                bulleted_lines_after_period(row.entregables),
+                bulleted_lines_after_period(row.evaluaciones),
             ])
             table.add_hline()
         
