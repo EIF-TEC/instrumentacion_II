@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="620" viewBox="0 0 1280 620">
+  <defs>
+    <style>
+      .bg { fill: #f8f7f2; }
+      .title { font: 700 24px 'Segoe UI', Arial, sans-serif; fill: #1f2937; }
+      .label { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #111827; }
+      .small { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #374151; }
+      .bit { font: 700 16px 'Consolas', 'Courier New', monospace; fill: #111827; }
+      .axis { stroke: #9ca3af; stroke-width: 2; }
+      .grid { stroke: #d1d5db; stroke-width: 1; stroke-dasharray: 6 6; }
+      .sync { stroke: #15803d; stroke-width: 6; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+      .clk { stroke: #b45309; stroke-width: 6; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+      .data { stroke: #1d4ed8; stroke-width: 6; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+      .sample { stroke: #dc2626; stroke-width: 2.5; stroke-dasharray: 4 4; }
+      .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 2; rx: 10; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1280" height="620"/>
+
+  <text class="title" x="60" y="48">Diagrama temporal sugerido para el enlace serial síncrono</text>
+
+  <rect class="box" x="845" y="72" width="370" height="126"/>
+  <text class="small" x="870" y="102">Convención usada en este ejemplo:</text>
+  <text class="small" x="870" y="132">• DIO2 = SYNC</text>
+  <text class="small" x="870" y="156">• DIO0 = CLK</text>
+  <text class="small" x="870" y="180">• DIO1 = DATA</text>
+
+  <line class="axis" x1="170" y1="120" x2="1210" y2="120"/>
+  <line class="axis" x1="170" y1="245" x2="1210" y2="245"/>
+  <line class="axis" x1="170" y1="370" x2="1210" y2="370"/>
+
+  <text class="label" x="75" y="126">SYNC</text>
+  <text class="label" x="87" y="251">CLK</text>
+  <text class="label" x="75" y="376">DATA</text>
+
+  <g>
+    <line class="grid" x1="250" y1="85" x2="250" y2="470"/>
+    <line class="grid" x1="350" y1="85" x2="350" y2="470"/>
+    <line class="grid" x1="450" y1="85" x2="450" y2="470"/>
+    <line class="grid" x1="550" y1="85" x2="550" y2="470"/>
+    <line class="grid" x1="650" y1="85" x2="650" y2="470"/>
+    <line class="grid" x1="750" y1="85" x2="750" y2="470"/>
+    <line class="grid" x1="850" y1="85" x2="850" y2="470"/>
+    <line class="grid" x1="950" y1="85" x2="950" y2="470"/>
+    <line class="grid" x1="1050" y1="85" x2="1050" y2="470"/>
+  </g>
+
+  <text class="small" x="214" y="505">Inicio</text>
+  <text class="small" x="381" y="505">b7</text>
+  <text class="small" x="481" y="505">b6</text>
+  <text class="small" x="581" y="505">b5</text>
+  <text class="small" x="681" y="505">b4</text>
+  <text class="small" x="781" y="505">b3</text>
+  <text class="small" x="881" y="505">b2</text>
+  <text class="small" x="981" y="505">b1</text>
+  <text class="small" x="1081" y="505">b0</text>
+
+  <path class="sync" d="M170 140 L250 140 L250 100 L1080 100 L1080 140 L1210 140"/>
+
+  <path class="clk" d="M250 265 L300 265 L300 225 L350 225 L350 265 L400 265 L400 225 L450 225 L450 265 L500 265 L500 225 L550 225 L550 265 L600 265 L600 225 L650 225 L650 265 L700 265 L700 225 L750 225 L750 265 L800 265 L800 225 L850 225 L850 265 L900 265 L900 225 L950 225 L950 265 L1000 265 L1000 225 L1050 225 L1050 265"/>
+
+  <path class="data" d="M170 390 L250 390 L250 330 L350 330 L350 390 L450 390 L450 330 L650 330 L650 390 L850 390 L850 330 L950 330 L950 390 L1050 390"/>
+
+  <text class="bit" x="292" y="315">1</text>
+  <text class="bit" x="392" y="395">0</text>
+  <text class="bit" x="492" y="315">1</text>
+  <text class="bit" x="592" y="315">1</text>
+  <text class="bit" x="692" y="395">0</text>
+  <text class="bit" x="792" y="395">0</text>
+  <text class="bit" x="892" y="315">1</text>
+  <text class="bit" x="992" y="315">1</text>
+
+  <line class="sample" x1="300" y1="205" x2="300" y2="420"/>
+  <line class="sample" x1="400" y1="205" x2="400" y2="420"/>
+  <line class="sample" x1="500" y1="205" x2="500" y2="420"/>
+  <line class="sample" x1="600" y1="205" x2="600" y2="420"/>
+  <line class="sample" x1="700" y1="205" x2="700" y2="420"/>
+  <line class="sample" x1="800" y1="205" x2="800" y2="420"/>
+  <line class="sample" x1="900" y1="205" x2="900" y2="420"/>
+  <line class="sample" x1="1000" y1="205" x2="1000" y2="420"/>
+
+  <text class="small" x="60" y="560">Sugerencia: colocar el bit en DATA antes del flanco ascendente de CLK y muestrear en el receptor en cada flanco ascendente.</text>
+  <text class="small" x="60" y="588">Ejemplo de trama: 10110011 (MSB primero). SYNC se mantiene alto durante toda la transmisión.</text>
+</svg>
