@@ -36,8 +36,7 @@ def bulleted_lines_after_period(value):
     parts = [part.strip() for part in re.split(r"\.\s+", text) if part.strip()]
     lines = []
     for part in parts:
-        clean_part = part if part.endswith("}") else f"{part}."
-        rendered_part = clean_part if r"\href{" in clean_part else escape_latex(clean_part)
+        rendered_part = part if r"\href{" in part else escape_latex(part)
         lines.append(rf"\textbullet\ {rendered_part}")
 
     return NoEscape(r"\newline ".join(lines))
