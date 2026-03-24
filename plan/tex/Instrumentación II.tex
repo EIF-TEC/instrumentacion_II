@@ -1,0 +1,62 @@
+\documentclass[10pt,letterpaper,landscape]{article}%
+\usepackage{lastpage}%
+\usepackage{parskip}%
+\usepackage{geometry}%
+\geometry{left=10mm,right=5mm,top=21mm,bottom=21mm,headheight=15mm,footskip=10mm}%
+\usepackage{fontspec}%
+\usepackage[spanish,activeacute]{babel}%
+\usepackage{anyfontsize}%
+\usepackage{fancyhdr}%
+\usepackage{csquotes}%
+\usepackage[ampersand]{easylist}%
+\usepackage[style=ieee,backend=biber]{biblatex}%
+\usepackage[skins,breakable]{tcolorbox}%
+\usepackage{booktabs}%
+\usepackage{textcomp}%
+\usepackage[pdfencoding=auto,unicode,bookmarks=false,colorlinks=false,pdfborder=\{0 0 0\},pdftitle=Instrumentación II,pdfauthor=\{Juan J. Rojas\},pdfsubject=\{Course Plan\}]{hyperref}%
+\usepackage{color}%
+\usepackage{tikz}%
+\usepackage{tabularx}%
+\usepackage{longtable}%
+\usepackage{ltablex}%
+%
+\definecolor{gris}{rgb}{0.27,0.27,0.27}%
+\definecolor{verde}{rgb}{0.051,0.733,0.447}%
+\definecolor{azul}{rgb}{0.02,0.455,0.773}%
+\setmainfont{Arial}%
+\setlength{\LTpre}{0pt}%
+\setlength{\LTpost}{0pt}%
+\setlength\LTleft{0pt}%
+\setlength\LTright{0pt}%
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}%
+\newcolumntype{P}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}\vspace{2pt}}m{#1}}%
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}%
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}%
+\newcolumntype{T}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}\vspace{2pt}}m{#1}}%
+\newcolumntype{N}{@{}m{0pt}@{}}%
+%
+\begin{document}%
+\normalsize%
+\begin{tikzpicture}[overlay,remember picture]%
+\node[inner sep = 0mm,outer sep = 0mm,anchor = north west,xshift = 210mm,yshift = 20mm] at (0.0,0.0) {\includegraphics[width=5cm]{C:/repositories/instrumentacion_II/figures/comunes/logo.png}};%
+\end{tikzpicture}%
+\vspace*{2mm}%
+\newline%
+\renewcommand{\arraystretch}{1.5}%
+\begin{tabularx}{\textwidth}{| C{0.04\linewidth} | L{0.24\linewidth} | L{0.24\linewidth} | L{0.18\linewidth} | L{0.18\linewidth} |}%
+\hline%
+\multicolumn{5}{c}{\textbf{Plan del curso Instrumentación II}}\\%
+\hline%
+Sem.&Tema&Objetivo&Metodología&Evaluaciones\\%
+\hline%
+\endhead%
+2&\textbullet\ Estructuras de datos: cadenas, enteros y booleanos.\newline \textbullet\ Estructuras de ejecución: for, tuneles.&\textbullet\ Recorrer y operar sobre una cadena de caracteres.\newline \textbullet\ Utilizar un bucle For para guardar y luego recuperar caracteres individuales de un arreglo.\newline \textbullet\ Construir arreglos usando usando shift register y por medio de la auto indexación.&\textbullet\ Práctica guiada ejecutada en clase.&\\%
+\hline%
+3&\textbullet\ Estructuras de datos: flotantes y arreglos.\newline \textbullet\ Estructuras de ejecución: while, casos.&\textbullet\ Leer la entradas digitales del NI myDAQ y mostrarlas como una arreglo de booleanos.\newline \textbullet\ Convertir un arreglo de boleanos en un número entero.\newline \textbullet\ Convertir un número entero en una cadena hexadecimal.&\textbullet\ Práctica realizada por el estudiante usando el instructivo.&\\%
+\hline%
+4&\textbullet\ Estructuras de datos: clusters.\newline \textbullet\ Elementos del panel: gráficos XY.\newline \textbullet\ Guardado de datos en archivos.&\textbullet\ Generar una función senoidal de frecuencia variable usando el formula node.\newline \textbullet\ Verificar la aplicación del Teorema de Niquist modificando el tiempo entre adquisiciones de datos.\newline \textbullet\ Crear un gráfico tipo chart y otro tipo XY.\newline \textbullet\ Guardar los datos en un archivo separado por comas.&\textbullet\ Práctica guiada ejecutada en clase.&\textbullet\ Examen corto 1.\newline \textbullet\ \href{https://github.com/EIF-TEC/instrumentacion_II/blob/main/assignments/pdf/t1.pdf}{Tarea 1}..\\%
+\hline%
+5&\textbullet\ Estructuras de datos: flotantes y arreglos.\newline \textbullet\ Estructuras de ejecución: bucle temporizado.\newline \textbullet\ Guardado de datos en archivos.&\textbullet\ Leer una entrada analógica y calcular el valor de la resistencia del termistor y la temperatura ambiente.\newline \textbullet\ Gráficar la resistencia y la temperatura.\newline \textbullet\ Guardar los datos en un archivo separado por comas.&\textbullet\ Práctica realizada por el estudiante usando el instructivo.&\\%
+\hline%
+\end{tabularx}%
+\end{document}

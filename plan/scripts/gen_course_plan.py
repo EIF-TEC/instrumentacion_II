@@ -12,16 +12,19 @@ from pylatex.base_classes import Environment, Arguments
 from pylatex.utils import NoEscape, bold, italic, escape_latex
 from datetime import date, timedelta
 
-root = Path(__file__).resolve().parent.parent
+root = Path(__file__).resolve().parents[2]
 
 plan_dir = root / "plan"
+plan_data_dir = plan_dir / "data"
+plan_tex_dir = plan_dir / "tex"
+plan_pdf_dir = plan_dir / "pdf"
 images_dir = root / "figures" / "comunes"
 
 course = "Instrumentación II"
 id = "IF3503"
 
 
-content = pd.read_csv(plan_dir / f"plan.csv").fillna("")
+content = pd.read_csv(plan_data_dir / "plan.csv").fillna("")
 
 print(content.head())
 
@@ -41,6 +44,9 @@ def bulleted_lines_after_period(value):
 
 
 def make_plan_pdf(id,course,images_dir):
+    plan_tex_dir.mkdir(parents=True, exist_ok=True)
+    plan_pdf_dir.mkdir(parents=True, exist_ok=True)
+
     logo_path = (images_dir / "logo.png").as_posix()
     # Opciones de geometría
     geometry_options = { 
@@ -150,13 +156,33 @@ def make_plan_pdf(id,course,images_dir):
 
 
 
-    doc.generate_pdf(plan_dir / course, clean=True, clean_tex=True, compiler='lualatex',silent=True)
+    tex_target = plan_tex_dir / course
+    tex_file = tex_target.with_suffix(".tex")
+    pdf_target = plan_pdf_dir / course
+
+    doc.generate_tex(filepath=str(tex_target))
+    subprocess.run(
+        [
+            "lualatex",
+            f"-output-directory={plan_pdf_dir}",
+            "-interaction=nonstopmode",
+            str(tex_file),
+        ],
+        check=True,
+        cwd=plan_dir,
+        capture_output=True,
+        text=True,
+    )
+
+    generated_pdf = plan_pdf_dir / tex_file.with_suffix(".pdf").name
+    if generated_pdf != pdf_target.with_suffix(".pdf") and generated_pdf.exists():
+        generated_pdf.replace(pdf_target.with_suffix(".pdf"))
 
 make_plan_pdf(id,course,images_dir)
 
-subprocess.run(["del", plan_dir / "*.aux"], shell=True, check=True)
-subprocess.run(["del", plan_dir / "*.bcf"], shell=True, check=True)
-subprocess.run(["del", plan_dir / "*.bbl"], shell=True, check=True)
-subprocess.run(["del", plan_dir / "*.blg"], shell=True, check=True)
-subprocess.run(["del", plan_dir / "*.log"], shell=True, check=True)
-subprocess.run(["del", plan_dir / "*.run.xml"], shell=True, check=True)
+subprocess.run(["del", plan_pdf_dir / "*.aux"], shell=True, check=True)
+subprocess.run(["del", plan_pdf_dir / "*.bcf"], shell=True, check=True)
+subprocess.run(["del", plan_pdf_dir / "*.bbl"], shell=True, check=True)
+subprocess.run(["del", plan_pdf_dir / "*.blg"], shell=True, check=True)
+subprocess.run(["del", plan_pdf_dir / "*.log"], shell=True, check=True)
+subprocess.run(["del", plan_pdf_dir / "*.run.xml"], shell=True, check=True)
