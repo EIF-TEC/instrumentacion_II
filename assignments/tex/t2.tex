@@ -13,29 +13,29 @@
  
 \begin{document}
 \lhead{Ingeniería Física \\ Escuela de Física \\ Tecnológico de Costa Rica} 
-\rhead{Instrumentación II \\ Tarea \#2  \\ Entrega: Semana 6} 
+\rhead{Instrumentación II \\ Tarea \#2  \\ Entrega: Semana 10} 
 \cfoot{\thepage\ de \pageref{LastPage}}
 \setlength{\parindent}{0em}
 
-El diagrama de bloques mostrado en la Figura \ref{fig:for} es utilizado para generar -partir de enteros del tipo \verb+uint8+- un arreglo de cadenas de texto que incluye los números del 0 al 9 y las letras de la $A$ a la $Z$
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=15cm]{fig/t2.1.png}
-    \caption{}
-    \label{fig:for}
-\end{figure}
-
-
-Usando Simulink realice lo siguiente:
+Usando LabVIEW desarrolle un instrumento virtual que ejecute una maquina de estados en un período de 1 segundo, la maquina de estados debe:
 
 \begin{itemize}
-    \item Descargue los archivos \href{https://github.com/juanjorojash/instrumentacion_II/blob/5b8d70f17f7545a45cf6b1aebac0eb5c55f2a2ad/simulaciones/t2.slx}{t2.slx} y \href{https://github.com/juanjorojash/instrumentacion_II/blob/3795263c9e017dead230c0d5c829228d59253f76/simulaciones/t2_process.m}{t2\_process.m} y estúdielos para entender su función.
-    \item Modifique el diagrama de bloques de forma que genere un arreglo de cadenas de texto que incluya los números del 0 al 9, las letras de la $A$ a la $Z$ y las letras de la $a$ a la $z$, recuerde modificar el tiempo de la simulación.
-    \item Usando \verb+t2_process.m+ genere el archivo \verb+datos.csv+ que contiene el resultado del arreglo separado por comas.
-    \item Guarde el diagrama de bloques modificado con el nombre \verb+t2_sol.slx+
-    \item Incluya los dos archivos en un archivo comprimido \verb+t2.zip+ y suba al TecDigital
+    \item Tener cinco estados definidos como:
+        \begin{itemize}
+            \item \emph{stand-by}: estado que espera que se presione el botón, pasa a estado \emph{hello}
+            \item \emph{hello}: estado que concatena letra por letra de la palabra \emph{hello} en un string que inicialmente esta vació, debe aparecer una nueva letra cada segundo, al finalizar la palabra pasa a estado \emph{space}
+            \item \emph{space}: estado que concatena un espacio vacío al string y espera por 5 segundos, pasa al estado \emph{world}
+            \item \emph{world}: estado que concatena letra por letra la palabra \emph{world} en el string, al finalizar la palabra pasa a estado \emph{end}
+            \item \emph{end}: estado que termina la ejecución del programa.
+        \end{itemize}
+    \item Mostrar como avanza la concatenación del string
+    \item Mostrar como avanza el tiempo en segundos en cada estado
+\end{itemize}
+
+Para finalizar: 
+\begin{itemize}
+    \item Guarde el instrumento virtual \verb+t4.vi+
+    \item Incluya el archivo en un archivo comprimido \verb+t4.zip+ y subalo al TecDigital
 \end{itemize}
 
 Cualquier entrega tardía se califica en base a 70. 
